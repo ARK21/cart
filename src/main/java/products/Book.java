@@ -15,6 +15,9 @@ public class Book implements Product {
         this.price = price;
     }
 
+    public Book() {
+    }
+
     public int getId() {
         return id;
     }

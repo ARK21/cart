@@ -8,13 +8,13 @@ import java.util.Map;
 
 public class Store {
 
-    private Map<Integer, Book> store = new HashMap<Integer, Book>();
+    private static Map<Integer, Book> store = new HashMap<Integer, Book>();
 
     public Store() {
 
     }
 
-    public Map<Integer, Book> getStore() throws SQLException, ClassNotFoundException {
+    public static Map<Integer, Book> getStore() throws SQLException, ClassNotFoundException {
         Connection c = getConnection();
         PreparedStatement statement = c.prepareStatement("SELECT * FROM books");
         ResultSet set = statement.executeQuery();
@@ -26,6 +26,7 @@ public class Store {
             float price = set.getFloat(4);
             sqlStore.put(id, new Book(id, title, author, price));
         }
+        store = sqlStore;
         return sqlStore;
     }
 

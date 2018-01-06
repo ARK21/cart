@@ -3,12 +3,12 @@
 <%@ page import="storage.Store" %>
 <html>
 <head>
-    <title>My Servlet</title>
+    <title>Books store</title>
 </head>
 <body>
-<h1>Books store</h1>
     <%  Store store = new Store();    %>
     <table cellpadding="2" cellspacing="2" border="1">
+        <caption>Books store</caption>
         <tr>
             <th>Id</th>
             <th>Title</th>
@@ -22,7 +22,7 @@
                 <td>${p.title}</td>
                 <td>${p.author}</td>
                 <td>${p.price}</td>
-                <td>Order Now</td>
+                <td><a href="CartController?id=${p.id}&action=ordernow">Order Now</a></td>
             </tr>
         </c:forEach>
     </table>
