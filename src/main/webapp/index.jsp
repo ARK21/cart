@@ -21,11 +21,12 @@
                 <td>${p.id}</td>
                 <td>${p.title}</td>
                 <td>${p.author}</td>
-                <td>${p.price}</td>
+                <td>${p.price} $</td>
                 <td><a href="CartController?id=${p.id}&action=ordernow">Order Now</a></td>
             </tr>
         </c:forEach>
     </table>
+    <div><a href="cart.jsp">Show my cart</a></div>
 
 </body>
 </html>

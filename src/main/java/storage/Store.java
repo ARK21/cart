@@ -2,6 +2,7 @@ package storage;
 
 import products.Book;
 
+import java.math.BigDecimal;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,10 +24,11 @@ public class Store {
             int id = set.getInt(1);
             String title = set.getString(2);
             String author = set.getString(3);
-            float price = set.getFloat(4);
-            sqlStore.put(id, new Book(id, title, author, price));
+            double price = set.getDouble(4);
+            sqlStore.put(id, new Book(id, title, author, new BigDecimal(price).setScale(2, BigDecimal.ROUND_HALF_UP) ));
         }
         store = sqlStore;
+        c.close();
         return sqlStore;
     }
 
