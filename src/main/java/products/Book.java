@@ -3,14 +3,23 @@ package products;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
-public class Book implements Product {
+/**
+ * Class Book. Main class for books store.
+ */
+public class Book {
 
-    private int id;
-    private String title;
-    private String author;
-    private BigDecimal price;
+    private int id; // book's id
+    private String title; // book's title
+    private String author; // book's author
+    private BigDecimal price; // price per one copy. Choose BigDecimal type for precision.
 
-
+    /**
+     * Constructor
+     * @param id     book's id
+     * @param title  book's title
+     * @param author book's author
+     * @param price  price per one copy
+     */
     public Book(int id, String title, String author, BigDecimal price) {
         this.id = id;
         this.title = title;
@@ -18,49 +27,81 @@ public class Book implements Product {
         this.price = price.setScale(2, BigDecimal.ROUND_HALF_UP);
     }
 
+    /**
+     * Empty constructor
+     */
     public Book() {
     }
 
+    /**
+     * get field id
+     *
+     * @return id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * set value into field id
+     *
+     * @param id setting value
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     * get field "title"
+     *
+     * @return id
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     * set value into field title
+     *
+     * @param title setting value
+     */
     public void setTitle(String title) {
         this.title = title;
     }
 
+    /**
+     * get field "author"
+     *
+     * @return author value
+     */
     public String getAuthor() {
         return author;
     }
 
+    /**
+     * set value into field author
+     *
+     * @param author setting value
+     */
     public void setAuthor(String author) {
         this.author = author;
     }
 
+    /**
+     * get field "price"
+     *
+     * @return price value
+     */
     public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
-        price.setScale(2, BigDecimal.ROUND_HALF_UP);
-    }
-
     /**
-     * Set precision #0.00 to double value
-     * @param price double value
-     * @return formated value
+     * set value into field price. precision = 2
+     *
+     * @param price BigDecimal value
      */
-    private double setPrecision(double price) {
-
-        DecimalFormat dec = new DecimalFormat("#0.00");
-        return Double.parseDouble( String.format("%.2f", price));
+    public void setPrice(BigDecimal price) {
+        this.price = price.setScale(2, BigDecimal.ROUND_HALF_UP);
     }
 }
