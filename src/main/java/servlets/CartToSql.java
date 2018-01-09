@@ -4,6 +4,7 @@ import products.Cart;
 import products.Item;
 import storage.CartKeeper;
 
+import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,7 +27,7 @@ public class CartToSql extends HttpServlet {
         Cart cart = new Cart(itemsList, sumOrderValue);
         try {
             new CartKeeper().keepCart(fullName, phoneNUmber, cart);
-        } catch (SQLException e) {
+        } catch (SQLException | NamingException e) {
             e.printStackTrace();
         }
         request.getRequestDispatcher("orderSucceed.jsp").forward(request, response);

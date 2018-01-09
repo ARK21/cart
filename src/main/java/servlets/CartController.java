@@ -3,6 +3,7 @@ package servlets;
 import products.Item;
 import storage.Store;
 
+import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -40,7 +41,7 @@ public class CartController extends HttpServlet {
                         cart.get(index).setQuantity(quantity);
                     }
                 }
-            } catch (SQLException | ClassNotFoundException e) {
+            } catch (SQLException | ClassNotFoundException | NamingException e) {
                 e.printStackTrace();
             }
             request.getRequestDispatcher("cart.jsp").forward(request, response);

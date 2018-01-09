@@ -2,6 +2,9 @@ package storage;
 
 import products.Book;
 
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.HashMap;
@@ -10,13 +13,16 @@ import java.util.Map;
 public class Store {
 
     private static Map<Integer, Book> store = new HashMap<Integer, Book>();
+    private static DataSource dataSource  = null;
 
     public Store() {
 
     }
 
-    public static Map<Integer, Book> getStore() throws SQLException, ClassNotFoundException {
-        Connection c = getConnection();
+    public static Map<Integer, Book> getStore() throws SQLException, ClassNotFoundException, NamingException {
+        InitialContext context = new InitialContext();
+        dataSource = (DataSource) context.lookup("java:comp/env/jdbc/shopCart");
+        Connection c = dataSource.getConnection();
         PreparedStatement statement = c.prepareStatement("SELECT * FROM books");
         ResultSet set = statement.executeQuery();
         Map<Integer, Book> sqlStore = new HashMap<Integer, Book>();
@@ -31,11 +37,4 @@ public class Store {
         c.close();
         return sqlStore;
     }
-
-    public static Connection getConnection() throws ClassNotFoundException, SQLException {
-        Class.forName("org.postgresql.Driver");
-        return DriverManager.getConnection("jdbc:postgresql://localhost:1121/OnlineShop", "postgres", "2114");
-    }
-
-
 }
