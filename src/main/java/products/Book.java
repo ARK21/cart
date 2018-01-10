@@ -1,7 +1,6 @@
 package products;
 
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
 
 /**
  * Class Book. Main class for books store.

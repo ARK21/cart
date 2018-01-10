@@ -1,9 +1,8 @@
 package servlets;
 
 import products.Item;
-import storage.Store;
+import storage.StoreGenerator;
 
-import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,55 +10,89 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-
+/**
+ * Servlet class. Add to cart and delete from it.
+ */
 @WebServlet("/CartController")
 public class CartController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 
+    /**
+     * Method reacts if client send get request
+     *
+     * @param request  httpservletrequest
+     * @param response httpservletresponse
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
-        HttpSession session = request.getSession();
+        String action = request.getParameter("action"); //parameter
+        HttpSession session = request.getSession(); // get session
+        // ordernow
         if (action.equals("ordernow")) {
-            try {
-                if (session.getAttribute("cart") == null) {
-                    List<Item> cart = new ArrayList<>();
-                    cart.add(new Item(Store.getStore().get(Integer.parseInt(request.getParameter("id"))), 1));
-                    session.setAttribute("cart", cart);
-                } else {
-                    List<Item> cart = (List<Item>) session.getAttribute("cart");
-                    int index = isExisting(Integer.parseInt(request.getParameter("id")), cart);
-                    if (index == -1) {
-                        cart.add(new Item(Store.getStore().get(Integer.parseInt(request.getParameter("id"))), 1));
-                        session.setAttribute("cart", cart);
-                    } else {
-                        int quantity = cart.get(index).getQuantity() + 1;
-                        cart.get(index).setQuantity(quantity);
-                    }
-                }
-            } catch (SQLException | ClassNotFoundException | NamingException e) {
-                e.printStackTrace();
+            // if there is no cart. Create new.
+            if (session.getAttribute("cart") == null) {
+                CopyOnWriteArrayList<Item> cart = new CopyOnWriteArrayList<Item>();
+                // add new Item in cart
+                cart.add(new Item(StoreGenerator.getStore().get(Integer.parseInt(request.getParameter("id"))), 1));
+                // set attribute
+                session.setAttribute("cart", cart);
             }
+            // if cart already exists
+            else {
+                // get cart from session
+                CopyOnWriteArrayList<Item> cart = (CopyOnWriteArrayList<Item>) session.getAttribute("cart");
+                // get adding book index in cart
+                int index = isExisting(Integer.parseInt(request.getParameter("id")), cart);
+                // if (index == -1) it don't exists in cart
+                if (index == -1) {
+                    // add new Item in cart
+                    cart.add(new Item(StoreGenerator.getStore().get(Integer.parseInt(request.getParameter("id"))), 1));
+                    session.setAttribute("cart", cart);
+                }
+                // If exists
+                else {
+                    // get book's quantity,  increase quantity by one
+                    int quantity = cart.get(index).getQuantity() + 1;
+                    // set quantity
+                    cart.get(index).setQuantity(quantity);
+                }
+            }
+            // send to cart.jsp
             request.getRequestDispatcher("cart.jsp").forward(request, response);
-        } else if (action.equals("delete")) {
-            List<Item> cart = (List<Item>) session.getAttribute("cart");
+        }
+        // delete
+        else if (action.equals("delete")) {
+            CopyOnWriteArrayList<Item> cart = (CopyOnWriteArrayList<Item>) session.getAttribute("cart");
+            //get deleting book index in cart
             int index = isExisting(Integer.parseInt(request.getParameter("id")), cart);
+            // decrease deleting book quantity if it > 1
             if (cart.get(index).getQuantity() > 1) {
                 int quantity = cart.get(index).getQuantity();
                 cart.get(index).setQuantity(quantity - 1);
-            } else {
+            }
+            // delete book if quantity == 1
+            else {
                 cart.remove(index);
             }
+            // set cart like attribute
             session.setAttribute("cart", cart);
+            // send to cart.jsp
             request.getRequestDispatcher("cart.jsp").forward(request, response);
         }
     }
 
-    private int isExisting(int id, List<Item> cart) {
+    /**
+     * Check if added Book already exists in cart.
+     *
+     * @param id book's id
+     * @param cart cart
+     * @return -1 if there is no id, return book index at CopyOnWriteArrayList if there is
+     */
+    private int isExisting(int id, CopyOnWriteArrayList<Item> cart) {
         for (int i = 0; i < cart.size(); i++) {
             if (cart.get(i).getBook().getId() == id)
                 return i;

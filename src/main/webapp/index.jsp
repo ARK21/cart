@@ -1,14 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="storage.Store" %>
+<%@ page import="storage.StoreGenerator" %>
 <html>
 <head>
     <title>Books store</title>
 </head>
 <body>
-    <%  Store store = new Store();    %>
+    <h1>Welcome to our books shop</h1>
+    <%  StoreGenerator store = new StoreGenerator();    %>
     <table cellpadding="2" cellspacing="2" border="1">
-        <caption>Books store</caption>
         <tr>
             <th>Id</th>
             <th>Title</th>
@@ -16,7 +16,7 @@
             <th>Price</th>
             <th>Buy</th>
         </tr>
-        <c:forEach var="p" items="<%=store.getStore().values()%>">
+        <c:forEach var="p" items="<%=StoreGenerator.getStore().values()%>">
             <tr>
                 <td>${p.id}</td>
                 <td>${p.title}</td>

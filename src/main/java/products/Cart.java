@@ -1,16 +1,15 @@
 package products;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
- * Class contains ArrayList of Item which customer chose.
+ * Class contains CopyOnWriteArrayList of Item which customer chose.
  * Else contains order full price
  */
 public class Cart {
 
-    private ArrayList<Item> userCart; // List of Items
+    private CopyOnWriteArrayList<Item> userCart; // List of Items
     private BigDecimal orderPrice; // full price
 
     /**
@@ -18,7 +17,7 @@ public class Cart {
      * @param userCart list of Item
      * @param orderPrice order full price
      */
-    public Cart(ArrayList<Item> userCart, BigDecimal orderPrice) {
+    public Cart(CopyOnWriteArrayList<Item> userCart, BigDecimal orderPrice) {
         this.userCart = userCart;
         this.orderPrice = orderPrice;
     }
@@ -33,7 +32,7 @@ public class Cart {
      * userCart getter
      * @return field userCart
      */
-    public ArrayList<Item> getUserCart() {
+    public CopyOnWriteArrayList<Item> getUserCart() {
         return userCart;
     }
 
@@ -41,7 +40,7 @@ public class Cart {
      * Setter for private field userCart
      * @param userCart ArrayList<Item>
      */
-    public void setUserCart(ArrayList<Item> userCart) {
+    public void setUserCart(CopyOnWriteArrayList<Item> userCart) {
         this.userCart = userCart;
     }
 
