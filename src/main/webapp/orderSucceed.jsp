@@ -5,6 +5,34 @@
     <title>Succeed</title>
 </head>
 <body>
-<p>Your order has been successfully registered. Your order id: <strong>#${sessionScope.order_id}</strong> <br>Thank you.</p>
+<p>Your order has been successfully registered. Your order id: <strong>#${sessionScope.order_id}</strong></p>
+<table cellspacing="2" cellpadding="2" border="1">
+    <tr>
+        <th>№</th>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+    </tr>
+    <c:forEach var="item" items="${sessionScope.cart}">
+        <c:set var="number" value="${number + 1}"></c:set>
+        <tr>
+            <td>${number}.</td>
+            <td>${item.book.id}</td>
+            <td>${item.book.title}</td>
+            <td>${item.book.author}</td>
+            <td>${item.book.price} $</td>
+            <td>${item.quantity}</td>
+            <td>${item.quantity * item.book.price} $</td>
+            </tr>
+    </c:forEach>
+    <tr>
+        <td colspan="6" align="right">Total price</td>
+        <td>${sessionScope.totalPrice} $</td>
+    </tr>
+</table>
+<p>Thank you.</p>
 </body>
 </html>
