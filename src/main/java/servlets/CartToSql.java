@@ -35,13 +35,13 @@ public class CartToSql extends HttpServlet {
         // thread-safe list. Keeps customer's order.
         CopyOnWriteArrayList<Item> itemsList =  (CopyOnWriteArrayList<Item>) session.getAttribute("cart");
         // order's price
-        BigDecimal sumOrderPrice =  new BigDecimal(request.getParameter("sumOrderValue"));
+        BigDecimal totalPrice =  new BigDecimal(request.getParameter("total_price"));
         // customer full name
         String fullName = request.getParameter("full_name");
         // customer phone number
         String phoneNUmber = request.getParameter("phone_number");
         // class contain item list and order's price
-        Cart cart = new Cart(itemsList, sumOrderPrice);
+        Cart cart = new Cart(itemsList, totalPrice);
         // class saves cart in database
         CartKeeper cartKeeper = new CartKeeper();
         try {
@@ -53,6 +53,8 @@ public class CartToSql extends HttpServlet {
         // get order id, to display at orderSucceed.jsp
         int order_id = cartKeeper.getOrder_id();
         session.setAttribute("order_id", order_id);
+        session.setAttribute("cart", itemsList);
+        session.setAttribute("totalPrice", totalPrice);
         // to orderSucceed.jsp
         request.getRequestDispatcher("orderSucceed.jsp").forward(request, response);
     }

@@ -18,7 +18,7 @@
         <th>Sub Total</th>
     </tr>
     <c:forEach var="item" items="${sessionScope.cart}">
-        <c:set var="sum" value="${sum + item.quantity * item.book.price}"></c:set>
+        <c:set var="totalPrice" value="${totalPrice + item.quantity * item.book.price}"></c:set>
         <tr>
             <td>
                 <a href="CartController?id=${item.book.id}&action=delete">Delete</a>
@@ -33,13 +33,13 @@
         </tr>
     </c:forEach>
     <tr>
-        <td colspan="6" align="right">Sum</td>
-        <td>${sum} $</td>
+        <td colspan="6" align="right">Total price</td>
+        <td>${totalPrice} $</td>
     </tr>
 </table>
 
 <form action="CartToSql" method="post">
-    <input type="hidden" name="sumOrderValue" value="${sum}">
+    <input type="hidden" name="total_price" value="${totalPrice}">
     <div class="clientInfo">
         <input type="text" name="full_name" placeholder="Full name">
         <input type="text" name="phone_number" placeholder="Phone number">
