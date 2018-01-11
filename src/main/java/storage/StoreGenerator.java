@@ -52,7 +52,7 @@ public class StoreGenerator {
      * Getter for store variable
      * @return store instance
      */
-    public static Map<Integer, Book> getStore(){
+    public Map<Integer, Book> getStore(){
         return store;
     }
 }

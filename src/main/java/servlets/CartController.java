@@ -17,6 +17,9 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 @WebServlet("/CartController")
 public class CartController extends HttpServlet {
+
+    private StoreGenerator store = new StoreGenerator();
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 
@@ -37,7 +40,7 @@ public class CartController extends HttpServlet {
             if (session.getAttribute("cart") == null) {
                 CopyOnWriteArrayList<Item> cart = new CopyOnWriteArrayList<Item>();
                 // add new Item in cart
-                cart.add(new Item(StoreGenerator.getStore().get(Integer.parseInt(request.getParameter("id"))), 1));
+                cart.add(new Item(store.getStore().get(Integer.parseInt(request.getParameter("id"))), 1));
                 // set attribute
                 session.setAttribute("cart", cart);
             }
@@ -50,7 +53,7 @@ public class CartController extends HttpServlet {
                 // if (index == -1) it don't exists in cart
                 if (index == -1) {
                     // add new Item in cart
-                    cart.add(new Item(StoreGenerator.getStore().get(Integer.parseInt(request.getParameter("id"))), 1));
+                    cart.add(new Item(store.getStore().get(Integer.parseInt(request.getParameter("id"))), 1));
                     session.setAttribute("cart", cart);
                 }
                 // If exists
