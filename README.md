@@ -10,6 +10,12 @@
 
  <li> 2. <strong> customer</strong> </li>
  
+![customerscheme](https://user-images.githubusercontent.com/18110699/34907844-859a6b3a-f8b7-11e7-92e1-86c0cdea8d7e.jpg)
+
+<li> 3. <strong> orders</strong> </li>
+
+![ordersscheme](https://user-images.githubusercontent.com/18110699/34907861-dbe91cac-f8b7-11e7-8fe0-bb2c7da27bae.jpg)
+
 # Interface
 <h2>Index.jsp</h2>
 
