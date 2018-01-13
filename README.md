@@ -1,4 +1,16 @@
 # Online-shop cart
+ <p>This project  is analogue of online-shop cart</p>
+
+# SQL 
+  <p>For information storage uses PostgreSQL 9.5. Data stores in 3 schemes:</p>
+  <li> 1. <strong> books</strong> </li>
+  
+  
+![booksscheme](https://user-images.githubusercontent.com/18110699/34907715-56b48334-f8b5-11e7-8d1d-e483d0441a50.jpg)
+
+ <li> 2. <strong> customer</strong> </li>
+ 
+# Interface
 <h2>Index.jsp</h2>
 
 ![main page](https://user-images.githubusercontent.com/18110699/34905793-b250a510-f892-11e7-8034-945dd9cdfef0.jpg)
