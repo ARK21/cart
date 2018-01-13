@@ -4,15 +4,17 @@
 # SQL 
   <p>For information storage uses PostgreSQL 9.5. Data stores in 3 schemes:</p>
   <li> 1. <strong> books</strong> </li>
-  
+  <p>Here stores list of enable book. Their IDs, authors, titles, price per one copy.</p>
   
 ![booksscheme](https://user-images.githubusercontent.com/18110699/34907887-568e8bcc-f8b8-11e7-8ca7-2c779e4642e1.jpg)
 
  <li> 2. <strong> customer</strong> </li>
+ <p>Here stores list of Customers. Their order_ids, full names, phone numbers, total prices. After order confirm, you get irder_id and  your data stores here.</p>
  
 ![customerscheme](https://user-images.githubusercontent.com/18110699/34907844-859a6b3a-f8b7-11e7-92e1-86c0cdea8d7e.jpg)
 
 <li> 3. <strong> orders</strong> </li>
+ <p>Here stores list of orders. Here you can see your order by order_id, books which you ordered, their titles, authors, quantity, prices per 1 copy. For primery key use 'uid' column </p>
 
 ![ordersscheme](https://user-images.githubusercontent.com/18110699/34907861-dbe91cac-f8b7-11e7-8fe0-bb2c7da27bae.jpg)
 
