@@ -16,7 +16,6 @@
 <p>On this page you can items, quantity, total price. Also you can delete or add one copy of chosen books, by clicking the corresponding buttons. To choose another book, back to the main page press: "Continue shopping". </p> 
 
 <p>When you will be ready to confirm order, fill "Full name" and "Phone number" fields and press "Confirm" </p>
-<h2>Index.jsp</h2>
 
 ![confirm order](https://user-images.githubusercontent.com/18110699/34907367-079e6af8-f8b0-11e7-96cc-3baa3ad10946.jpg)
 <h2>orderSuccessed.jsp</h2>
