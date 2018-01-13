@@ -23,12 +23,14 @@
 <p>Your will redirect to the successful confirmation page. Here you can see order list and order id. It's id of your order in database.</p>
 
 ![confirm succeed](https://user-images.githubusercontent.com/18110699/34907451-301823a6-f8b1-11e7-9f05-49a36de4d017.jpg)
-Now you can see order data in database.
-Customer data and total price.
+<hr>
+<p>Now you can see order data in database. </p>
+<h3>Customer data and total price. </h3>
 
 ![sqlcustomer](https://user-images.githubusercontent.com/18110699/34907550-0964dd74-f8b3-11e7-875d-e31769569d50.jpg)
 
-Order items.
+<h3>Order items. </h3>
+
 ![sqlorders](https://user-images.githubusercontent.com/18110699/34907555-1653d94a-f8b3-11e7-8dbd-4e97efa91373.jpg)
 
 
