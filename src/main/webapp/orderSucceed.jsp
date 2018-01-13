@@ -3,10 +3,13 @@
 <html>
 <head>
     <title>Succeed</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <p>Your order has been successfully registered. Your order id: <strong>#${sessionScope.order_id}</strong></p>
-<table cellspacing="2" cellpadding="2" border="1">
+<div class="mainContainer">
+<table>
+    <caption>Your order</caption>
     <tr>
         <th>№</th>
         <th>Id</th>
@@ -33,6 +36,7 @@
         <td>${sessionScope.totalPrice} $</td>
     </tr>
 </table>
+</div>
 <p>Thank you.</p>
 </body>
 </html>

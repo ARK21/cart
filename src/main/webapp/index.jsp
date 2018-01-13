@@ -4,11 +4,14 @@
 <html>
 <head>
     <title>Books store</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Welcome to our books shop</h1>
-    <%  StoreGenerator store = new StoreGenerator();    %>
-    <table cellpadding="2" cellspacing="2" border="1">
+<h1>Welcome to our books shop</h1>
+<% StoreGenerator store = new StoreGenerator(); %>
+<div class="mainContainer">
+    <table>
+        <caption>Enable books</caption>
         <tr>
             <th>Id</th>
             <th>Title</th>
@@ -16,7 +19,7 @@
             <th>Price</th>
             <th>Buy</th>
         </tr>
-        <c:forEach var="p" items="<%=StoreGenerator.getStore().values()%>">
+        <c:forEach var="p" items="<%=store.getStore().values()%>">
             <tr>
                 <td>${p.id}</td>
                 <td>${p.title}</td>
@@ -26,7 +29,7 @@
             </tr>
         </c:forEach>
     </table>
-    <div><a href="cart.jsp">Show my cart</a></div>
-
+    <div class="move"><a href="cart.jsp">Show my cart</a></div>
+</div>
 </body>
 </html>

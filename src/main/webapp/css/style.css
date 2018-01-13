@@ -1,0 +1,57 @@
+body {
+    background-color: aliceblue;
+    text-align: center;
+}
+table, tr, td, th {
+    border: 2px #000000 solid;
+    border-collapse: collapse;
+    margin: 20px;
+    width: 800px;
+    text-align: center;
+}
+
+caption {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.mainContainer {
+    margin: 25px 250px 0 250px;
+    text-align: center;
+}
+
+.inputForm {
+    width: 300px;
+    font-size: 13px;
+    padding: 6px 0 4px 10px;
+    border: 1px solid #cecece;
+    background: #F6F6f6;
+    border-radius: 8px;
+}
+
+.inputForm:focus {
+    outline: none!important;
+}
+
+.submit {
+    cursor: pointer;
+    border: 1px solid #cecece;
+    background: #f6f6f6;
+    box-shadow: inset 0px 20px 20px #ffffff;
+    border-radius: 8px;
+    padding: 6px 5px 4px 5px;
+    width: 80px;
+}
+
+.container {
+    text-align: center;
+}
+
+.move {
+    text-align: center;
+}
+
+p {
+    font-size: 20px;
+}
