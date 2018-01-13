@@ -1,3 +1,3 @@
-# <h1>Cart</h1>
+# Online-shop cart
 <hr>
 <h2>Index.jsp</h2>
