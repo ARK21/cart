@@ -8,6 +8,7 @@
  <li> 1. You can add 1 instance of Item in cart, to press: "Order now". </li>
  <li> 2. You can see what items your cart contain, to press: "Show my cart". If your cart is empty. your will see this:</li>
  <h2>cart.jsp</h2> 
+
 ![empty cart](https://user-images.githubusercontent.com/18110699/34907069-77320e38-f8ab-11e7-908f-86da8d8825eb.jpg)
 <p>If you press "Order now", chosen book will be add and you will redirect to your cart:</p>
 
@@ -16,6 +17,7 @@
 
 <p>When you will be ready to confirm order, fill "Full name" and "Phone number" fields and press "Confirm" </p>
 <h2>Index.jsp</h2>
+
 ![confirm order](https://user-images.githubusercontent.com/18110699/34907367-079e6af8-f8b0-11e7-96cc-3baa3ad10946.jpg)
 <h2>orderSuccessed.jsp</h2>
 <p>Your will redirect to the successful confirmation page. Here you can see order list and order id. It's id of your order in database.</p>
