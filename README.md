@@ -1,5 +1,10 @@
 # Online-shop cart
  <p>This project  is analogue of online-shop cart</p>
+ 
+# Download
+<p>Download cart.zip. Install instruction is inside.</p>
+
+[cart.zip](https://github.com/ARK21/cart/files/1629672/cart.zip)
 
 # SQL 
   <p>For information storage uses PostgreSQL 9.5. Data stores in 3 schemes:</p>
