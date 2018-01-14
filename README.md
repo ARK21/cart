@@ -1,5 +1,5 @@
 # Online-shop cart
- <p>This project  is analogue of online-shop cart</p>
+ <p>This project  is analogue of online-shop cart.</p>
  
 # Download
 <p>Download cart.zip. Install instruction is inside.</p>
